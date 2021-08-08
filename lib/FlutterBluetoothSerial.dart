@@ -49,7 +49,7 @@ class FlutterBluetoothSerial {
 
   /// State of the Bluetooth adapter.
   Future<BluetoothState> get state async => BluetoothState.fromUnderlyingValue(
-      await (_methodChannel.invokeMethod('getState') as FutureOr<int>));
+      await (_methodChannel.invokeMethod('getState') as Future<dynamic>));
 
   /// Returns the hardware address of the local Bluetooth adapter.
   ///
@@ -94,7 +94,7 @@ class FlutterBluetoothSerial {
   Future<BluetoothBondState> getBondStateForAddress(String address) async {
     return BluetoothBondState.fromUnderlyingValue(await (_methodChannel
             .invokeMethod('getDeviceBondState', {"address": address})
-        as FutureOr<int>));
+        as Future<dynamic>));
   }
 
   /// Starts outgoing bonding (pairing) with device with given address.
